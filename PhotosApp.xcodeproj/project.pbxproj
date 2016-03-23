@@ -16,6 +16,7 @@
 		236D9BC21CA2B23B00A5C89D /* APPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D9BC11CA2B23B00A5C89D /* APPhotoAlbum.m */; };
 		236D9BC81CA2E01D00A5C89D /* APAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D9BC71CA2E01D00A5C89D /* APAlbumTableViewCell.m */; };
 		236D9BCC1CA3085800A5C89D /* APAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D9BCB1CA3085800A5C89D /* APAlbumsViewController.m */; };
+		236D9BD01CA309F500A5C89D /* APAlbumDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D9BCF1CA309F500A5C89D /* APAlbumDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,8 @@
 		236D9BC71CA2E01D00A5C89D /* APAlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAlbumTableViewCell.m; sourceTree = "<group>"; };
 		236D9BCA1CA3085800A5C89D /* APAlbumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAlbumsViewController.h; sourceTree = "<group>"; };
 		236D9BCB1CA3085800A5C89D /* APAlbumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAlbumsViewController.m; sourceTree = "<group>"; };
+		236D9BCE1CA309F500A5C89D /* APAlbumDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAlbumDetailViewController.h; sourceTree = "<group>"; };
+		236D9BCF1CA309F500A5C89D /* APAlbumDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAlbumDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,7 @@
 		2352CADA1CA13EFA001AB571 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				236D9BCD1CA3098B00A5C89D /* Album */,
 				236D9BC91CA3085800A5C89D /* Albums */,
 			);
 			path = Controllers;
@@ -194,6 +198,15 @@
 			path = Albums;
 			sourceTree = "<group>";
 		};
+		236D9BCD1CA3098B00A5C89D /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				236D9BCE1CA309F500A5C89D /* APAlbumDetailViewController.h */,
+				236D9BCF1CA309F500A5C89D /* APAlbumDetailViewController.m */,
+			);
+			path = Album;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -268,6 +281,7 @@
 			files = (
 				2352CAD81CA13ED4001AB571 /* AppDelegate.m in Sources */,
 				236D9BCC1CA3085800A5C89D /* APAlbumsViewController.m in Sources */,
+				236D9BD01CA309F500A5C89D /* APAlbumDetailViewController.m in Sources */,
 				236D9BC21CA2B23B00A5C89D /* APPhotoAlbum.m in Sources */,
 				236D9BC81CA2E01D00A5C89D /* APAlbumTableViewCell.m in Sources */,
 				2352CAEF1CA13F23001AB571 /* main.m in Sources */,
