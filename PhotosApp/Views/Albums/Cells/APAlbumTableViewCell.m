@@ -13,9 +13,10 @@
 
 @interface APAlbumTableViewCell()
 
-@property (weak, nonatomic) IBOutlet UIView *thumbnailImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *thumbnailImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
+@property (assign, nonatomic) PHImageRequestID requestId;
 
 @end
 
@@ -29,6 +30,44 @@
     self.titleLabel.text = album.title;
     NSUInteger count = album.photoAssets.count;
     self.countLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)count];
+
+    if (self.requestId != 0) {
+        [[PHImageManager defaultManager] cancelImageRequest:self.requestId];
+        self.requestId = 0;
+    }
+
+    PHAsset *lastImageAsset = album.photoAssets.lastObject;
+
+    if (lastImageAsset) {
+        self.requestId = [[PHImageManager defaultManager] requestImageForAsset:lastImageAsset
+                                                                    targetSize:self.thumbnailImageView.frame.size
+                                                                   contentMode:PHImageContentModeAspectFill
+                                                                       options:nil
+                                                                 resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                                                                     self.thumbnailImageView.image = result;
+                                                                 }];
+    }
+}
+
+
+#pragma mark - ovveride
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    UIColor *backgroundImageColor = self.thumbnailImageView.backgroundColor;
+
+    [super setSelected:selected animated:animated];
+
+    self.thumbnailImageView.backgroundColor = backgroundImageColor;
+}
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+{
+    UIColor *backgroundImageColor = self.thumbnailImageView.backgroundColor;
+
+    [super setHighlighted:highlighted animated:animated];
+
+    self.thumbnailImageView.backgroundColor = backgroundImageColor;
 }
 
 @end

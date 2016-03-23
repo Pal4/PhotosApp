@@ -80,7 +80,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="countLabel" destination="TnS-N9-SP3" id="yA7-sS-0wm"/>
-                                            <outlet property="thumbnailImageView" destination="qCH-LH-eAa" id="Qs6-FM-3Iy"/>
+                                            <outlet property="thumbnailImageView" destination="wQc-aM-Hb2" id="i9w-o6-giJ"/>
                                             <outlet property="titleLabel" destination="bgI-Ap-yCg" id="e5i-jx-1ek"/>
                                         </connections>
                                     </tableViewCell>
