@@ -12,6 +12,7 @@
 
 @interface APPhotoCell : UICollectionViewCell
 
++ (UINib *)nib;
 + (NSString *)reuseIdentifier;
 - (void)configureWithAsset:(PHAsset *)asset;
 

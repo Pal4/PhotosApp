@@ -23,6 +23,10 @@
     return [NSString stringWithFormat:@"%@Identifier", NSStringFromClass([self class])];
 }
 
++ (UINib *)nib {
+    return [UINib nibWithNibName:NSStringFromClass([self class]) bundle:nil];
+}
+
 - (void)configureWithAsset:(PHAsset *)asset {
     if (self.requestId != 0) {
         [[PHImageManager defaultManager] cancelImageRequest:self.requestId];

@@ -1,36 +1,38 @@
 //
-//  APAlbumDetailViewController.m
+//  APPhotosViewController.m
 //  PhotosApp
 //
 //  Created by Андрей Полунин on 3/23/16.
 //  Copyright © 2016 Andrey Polunin. All rights reserved.
 //
 
-#import "APAlbumDetailViewController.h"
+#import "APPhotosViewController.h"
 #import "APPhotoAlbum.h"
 #import "APPhotoCell.h"
-#import "APPhotosViewController.h"
-
-static NSString *const kShowPhotosSegue = @"ShowPhotosSegue";
 
 @import Photos;
 
-@interface APAlbumDetailViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface APPhotosViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (assign, nonatomic) NSUInteger selectedPhotoIndex;
 
 @end
 
-@implementation APAlbumDetailViewController
+@implementation APPhotosViewController
 
 #pragma mark - Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = self.album.title;
     [self setupCollectionView];
+
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    [self reloadDataAndSetOffset];
 }
 
 
@@ -38,8 +40,14 @@ static NSString *const kShowPhotosSegue = @"ShowPhotosSegue";
 
 - (void)setupCollectionView {
     [self.collectionView registerNib:[APPhotoCell nib] forCellWithReuseIdentifier:[APPhotoCell reuseIdentifier]];
+    self.collectionView.hidden = YES;
 }
 
+- (void)reloadDataAndSetOffset {
+    [self.collectionView reloadData];
+    self.collectionView.contentOffset = [self contentOffestForIndex:self.startIndex];
+    self.collectionView.hidden = NO;
+}
 
 #pragma mark - UICollectionViewDataSource
 
@@ -55,30 +63,20 @@ static NSString *const kShowPhotosSegue = @"ShowPhotosSegue";
 }
 
 
-#pragma mark - UICollectionViewDelegate
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    self.selectedPhotoIndex = indexPath.row;
-    [self performSegueWithIdentifier:kShowPhotosSegue sender:self];
-}
-
-
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat width = self.collectionView.bounds.size.width / 3.f;
-    return CGSizeMake(width, width);
+    return self.collectionView.bounds.size;
 }
 
 
-#pragma mark - Navigation
+#pragma mark - Private
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:kShowPhotosSegue]) {
-        APPhotosViewController *vc = segue.destinationViewController;
-        vc.album = self.album;
-        vc.startIndex = self.selectedPhotoIndex;
-    }
+- (CGPoint)contentOffestForIndex:(NSUInteger)index {
+    CGFloat elementWidth = self.collectionView.bounds.size.width;
+    CGPoint offset = CGPointMake((index * elementWidth), 0.f);
+    return offset;
 }
+
 
 @end
