@@ -126,6 +126,7 @@ static NSString *const kShowAlbumSegue = @"ShowAlbumSegue";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     self.selectedAlbum = self.albums[indexPath.row];
+    [self performSegueWithIdentifier:kShowAlbumSegue sender:self];
 }
 
 

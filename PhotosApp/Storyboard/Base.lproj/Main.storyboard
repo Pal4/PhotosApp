@@ -47,7 +47,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wQc-aM-Hb2">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wQc-aM-Hb2">
                                                     <rect key="frame" x="10" y="5" width="59" height="59"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -82,7 +82,6 @@
                                             <outlet property="countLabel" destination="TnS-N9-SP3" id="yA7-sS-0wm"/>
                                             <outlet property="thumbnailImageView" destination="wQc-aM-Hb2" id="i9w-o6-giJ"/>
                                             <outlet property="titleLabel" destination="bgI-Ap-yCg" id="e5i-jx-1ek"/>
-                                            <segue destination="fgu-P7-jzX" kind="show" identifier="ShowAlbumSegue" id="XdX-zp-rRl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -109,6 +108,7 @@
                     <connections>
                         <outlet property="fetchIndicator" destination="dxS-J3-AiQ" id="uJb-mD-zMD"/>
                         <outlet property="tableView" destination="wdu-4O-LEc" id="3VD-vX-wL5"/>
+                        <segue destination="fgu-P7-jzX" kind="show" identifier="ShowAlbumSegue" id="54W-Hv-pOl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -129,21 +129,22 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KEx-zb-lIV">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="AH8-0c-lCL">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="AH8-0c-lCL">
                                     <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="2qk-1g-u9d">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="APPhotoCellIdentifier" id="2qk-1g-u9d" customClass="APPhotoCell">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="amD-Uv-K1S">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="amD-Uv-K1S">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 </imageView>
                                             </subviews>
@@ -155,8 +156,15 @@
                                             <constraint firstItem="amD-Uv-K1S" firstAttribute="leading" secondItem="2qk-1g-u9d" secondAttribute="leading" id="tsi-Kh-cPR"/>
                                             <constraint firstAttribute="trailing" secondItem="amD-Uv-K1S" secondAttribute="trailing" id="vdO-Qb-kEB"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="amD-Uv-K1S" id="buC-eJ-zhN"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="fgu-P7-jzX" id="vZa-Ue-Eld"/>
+                                    <outlet property="delegate" destination="fgu-P7-jzX" id="xj0-ai-pT9"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -167,10 +175,13 @@
                             <constraint firstItem="KEx-zb-lIV" firstAttribute="top" secondItem="yw4-Wk-icT" secondAttribute="bottom" id="rJ6-wg-ilC"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="KEx-zb-lIV" id="DNo-2r-q16"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Hi-t9-ghv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="664.5" y="460.5"/>
+            <point key="canvasLocation" x="691.5" y="460.5"/>
         </scene>
     </scenes>
 </document>
