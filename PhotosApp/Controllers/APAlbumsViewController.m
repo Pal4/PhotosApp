@@ -30,6 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self setupViews];
     [self requestPermission];
 }
 
@@ -40,6 +41,14 @@
 
 
 #pragma mark - Setup
+
+- (void)setupViews {
+    [self setupTableView];
+}
+
+- (void)setupTableView {
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
 
 - (void)setupWithAuthorization:(PHAuthorizationStatus)status {
     if (status == PHAuthorizationStatusAuthorized) {
