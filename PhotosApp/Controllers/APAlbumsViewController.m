@@ -6,24 +6,24 @@
 //  Copyright © 2016 Andrey Polunin. All rights reserved.
 //
 
-#import "ViewController.h"
-#import "APPhotoAlbums.h"
+#import "APAlbumsViewController.h"
+#import "APPhotoAlbum.h"
 #import "APAlbumTableViewCell.h"
 
 @import Photos;
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface APAlbumsViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) UIAlertController *unauthorizedAlert;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *fetchIndicator;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
-@property (strong, nonatomic) NSArray<APPhotoAlbums *> *albums;
+@property (strong, nonatomic) NSArray<APPhotoAlbum *> *albums;
 
 @end
 
-@implementation ViewController
+@implementation APAlbumsViewController
 
 #pragma mark - Lifecyle
 
@@ -59,7 +59,7 @@
 
 - (void)setupDataSource {
     [self showActivity];
-    [APPhotoAlbums fetchPhotoAlbumsWithCompletion:^(NSArray<APPhotoAlbums *> *albums) {
+    [APPhotoAlbum fetchPhotoAlbumsWithCompletion:^(NSArray<APPhotoAlbum *> *albums) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.albums = albums;
             [self reloadData];

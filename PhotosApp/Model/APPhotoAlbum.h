@@ -12,10 +12,10 @@
 @class PHAssetCollection, PHFetchResult<ObjectType>, PHAsset;
 
 
-@interface APPhotoAlbums : NSObject
+@interface APPhotoAlbum : NSObject
 
 
-+ (void)fetchPhotoAlbumsWithCompletion:(void(^)(NSArray<APPhotoAlbums *>*))completion;
++ (void)fetchPhotoAlbumsWithCompletion:(void(^)(NSArray<APPhotoAlbum *>*))completion;
 
 - (instancetype)initWithAssetCollection:(PHAssetCollection *)collection;
 - (PHFetchResult<PHAsset *> *)photoAssets;

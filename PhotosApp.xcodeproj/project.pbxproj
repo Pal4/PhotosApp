@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2352CAD81CA13ED4001AB571 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2352CAD71CA13ED4001AB571 /* AppDelegate.m */; };
-		2352CADD1CA13EFA001AB571 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2352CADC1CA13EFA001AB571 /* ViewController.m */; };
+		2352CADD1CA13EFA001AB571 /* APAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2352CADC1CA13EFA001AB571 /* APAlbumsViewController.m */; };
 		2352CAE31CA13F14001AB571 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2352CAE21CA13F14001AB571 /* Assets.xcassets */; };
 		2352CAE91CA13F1C001AB571 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2352CAE51CA13F1C001AB571 /* LaunchScreen.storyboard */; };
 		2352CAEA1CA13F1C001AB571 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2352CAE71CA13F1C001AB571 /* Main.storyboard */; };
 		2352CAEE1CA13F23001AB571 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2352CAEC1CA13F23001AB571 /* Info.plist */; };
 		2352CAEF1CA13F23001AB571 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2352CAED1CA13F23001AB571 /* main.m */; };
-		236D9BC21CA2B23B00A5C89D /* APPhotoAlbums.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D9BC11CA2B23B00A5C89D /* APPhotoAlbums.m */; };
+		236D9BC21CA2B23B00A5C89D /* APPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D9BC11CA2B23B00A5C89D /* APPhotoAlbum.m */; };
 		236D9BC81CA2E01D00A5C89D /* APAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D9BC71CA2E01D00A5C89D /* APAlbumTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -22,15 +22,15 @@
 		2352CABB1CA13CDF001AB571 /* PhotosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2352CAD61CA13ED4001AB571 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2352CAD71CA13ED4001AB571 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2352CADB1CA13EFA001AB571 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2352CADC1CA13EFA001AB571 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2352CADB1CA13EFA001AB571 /* APAlbumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAlbumsViewController.h; sourceTree = "<group>"; };
+		2352CADC1CA13EFA001AB571 /* APAlbumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAlbumsViewController.m; sourceTree = "<group>"; };
 		2352CAE21CA13F14001AB571 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2352CAE61CA13F1C001AB571 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2352CAE81CA13F1C001AB571 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2352CAEC1CA13F23001AB571 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2352CAED1CA13F23001AB571 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		236D9BC01CA2B23B00A5C89D /* APPhotoAlbums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPhotoAlbums.h; sourceTree = "<group>"; };
-		236D9BC11CA2B23B00A5C89D /* APPhotoAlbums.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPhotoAlbums.m; sourceTree = "<group>"; };
+		236D9BC01CA2B23B00A5C89D /* APPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPhotoAlbum.h; sourceTree = "<group>"; };
+		236D9BC11CA2B23B00A5C89D /* APPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPhotoAlbum.m; sourceTree = "<group>"; };
 		236D9BC61CA2E01D00A5C89D /* APAlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAlbumTableViewCell.h; sourceTree = "<group>"; };
 		236D9BC71CA2E01D00A5C89D /* APAlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAlbumTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,8 +99,8 @@
 		2352CADA1CA13EFA001AB571 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2352CADB1CA13EFA001AB571 /* ViewController.h */,
-				2352CADC1CA13EFA001AB571 /* ViewController.m */,
+				2352CADB1CA13EFA001AB571 /* APAlbumsViewController.h */,
+				2352CADC1CA13EFA001AB571 /* APAlbumsViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -163,8 +163,8 @@
 		236D9BBF1CA2B21200A5C89D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				236D9BC01CA2B23B00A5C89D /* APPhotoAlbums.h */,
-				236D9BC11CA2B23B00A5C89D /* APPhotoAlbums.m */,
+				236D9BC01CA2B23B00A5C89D /* APPhotoAlbum.h */,
+				236D9BC11CA2B23B00A5C89D /* APPhotoAlbum.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -259,8 +259,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2352CAD81CA13ED4001AB571 /* AppDelegate.m in Sources */,
-				236D9BC21CA2B23B00A5C89D /* APPhotoAlbums.m in Sources */,
-				2352CADD1CA13EFA001AB571 /* ViewController.m in Sources */,
+				236D9BC21CA2B23B00A5C89D /* APPhotoAlbum.m in Sources */,
+				2352CADD1CA13EFA001AB571 /* APAlbumsViewController.m in Sources */,
 				236D9BC81CA2E01D00A5C89D /* APAlbumTableViewCell.m in Sources */,
 				2352CAEF1CA13F23001AB571 /* main.m in Sources */,
 			);

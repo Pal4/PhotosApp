@@ -7,7 +7,7 @@
 //
 
 #import "APAlbumTableViewCell.h"
-#import "APPhotoAlbums.h"
+#import "APPhotoAlbum.h"
 
 @import Photos;
 
@@ -25,7 +25,7 @@
     return [NSString stringWithFormat:@"%@Identifier", NSStringFromClass([self class])];
 }
 
-- (void)configureWithAlbum:(APPhotoAlbums *)album {
+- (void)configureWithAlbum:(APPhotoAlbum *)album {
     self.titleLabel.text = album.title;
     NSUInteger count = album.photoAssets.count;
     self.countLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)count];

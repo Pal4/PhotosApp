@@ -6,11 +6,11 @@
 //  Copyright © 2016 Andrey Polunin. All rights reserved.
 //
 
-#import "APPhotoAlbums.h"
+#import "APPhotoAlbum.h"
 
 @import Photos;
 
-@interface APPhotoAlbums ()
+@interface APPhotoAlbum ()
 
 @property (strong, nonatomic) PHAssetCollection *assetCollection;
 @property (strong, nonatomic) PHFetchResult<PHAsset *> *photoAssets;
@@ -18,11 +18,11 @@
 @end
 
 
-@implementation APPhotoAlbums
+@implementation APPhotoAlbum
 
 #pragma mark - Fetching albums
 
-+ (void)fetchPhotoAlbumsWithCompletion:(void (^)(NSArray<APPhotoAlbums *> *))completion {
++ (void)fetchPhotoAlbumsWithCompletion:(void (^)(NSArray<APPhotoAlbum *> *))completion {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
         PHFetchResult<PHAssetCollection *> *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum
@@ -37,7 +37,7 @@
                 continue;
             }
             
-            [albums addObject:[[APPhotoAlbums alloc] initWithAssetCollection:collection]];
+            [albums addObject:[[APPhotoAlbum alloc] initWithAssetCollection:collection]];
         }
 
         if (completion) {

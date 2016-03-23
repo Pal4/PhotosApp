@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class APPhotoAlbums;
+@class APPhotoAlbum;
 
 
 @interface APAlbumTableViewCell : UITableViewCell
 
 + (NSString *)reuseIdentifier;
-- (void)configureWithAlbum:(APPhotoAlbums *)album;
+- (void)configureWithAlbum:(APPhotoAlbum *)album;
 
 @end
