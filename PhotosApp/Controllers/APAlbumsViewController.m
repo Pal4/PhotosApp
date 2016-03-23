@@ -104,10 +104,9 @@
 #pragma mark - Photo permission
 
 - (void)requestPermission {
-    __weak typeof(self) wSelf = self;
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [wSelf setupWithAuthorization:status];
+            [self setupWithAuthorization:status];
         });
     }];
 }
