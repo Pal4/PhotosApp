@@ -9,8 +9,12 @@
 #import "APAlbumsViewController.h"
 #import "APPhotoAlbum.h"
 #import "APAlbumTableViewCell.h"
+#import "APAlbumDetailViewController.h"
 
 @import Photos;
+
+
+static NSString *const kShowAlbumSegue = @"ShowAlbumSegue";
 
 @interface APAlbumsViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -18,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *fetchIndicator;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-
+@property (strong, nonatomic) APPhotoAlbum *selectedAlbum;
 @property (strong, nonatomic) NSArray<APPhotoAlbum *> *albums;
 
 @end
@@ -32,6 +36,12 @@
     // Do any additional setup after loading the view, typically from a nib.
     [self setupViews];
     [self requestPermission];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    //Animate desseclect
+    [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,6 +89,17 @@
 }
 
 
+#pragma mark - Photo permission
+
+- (void)requestPermission {
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self setupWithAuthorization:status];
+        });
+    }];
+}
+
+
 #pragma mark - Reload data
 
 - (void)reloadData {
@@ -101,14 +122,20 @@
 }
 
 
-#pragma mark - Photo permission
+#pragma mark - UITableViewDelegate
 
-- (void)requestPermission {
-    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self setupWithAuthorization:status];
-        });
-    }];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    self.selectedAlbum = self.albums[indexPath.row];
+}
+
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:kShowAlbumSegue]) {
+        APAlbumDetailViewController *vc = segue.destinationViewController;
+        vc.album = self.selectedAlbum;
+    }
 }
 
 
