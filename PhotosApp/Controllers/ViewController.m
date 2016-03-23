@@ -7,12 +7,19 @@
 //
 
 #import "ViewController.h"
+#import "APPhotoAlbums.h"
+#import "APAlbumTableViewCell.h"
 
 @import Photos;
 
-@interface ViewController ()
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) UIAlertController *unauthorizedAlert;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *fetchIndicator;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+
+@property (strong, nonatomic) NSArray<APPhotoAlbums *> *albums;
 
 @end
 
@@ -43,11 +50,45 @@
 }
 
 - (void)setupAuthorized {
-
+    [self setupDataSource];
 }
 
 - (void)setupUnauthorized {
     [self presentViewController:self.unauthorizedAlert animated:YES completion:nil];
+}
+
+- (void)setupDataSource {
+    [self showActivity];
+    [APPhotoAlbums fetchPhotoAlbumsWithCompletion:^(NSArray<APPhotoAlbums *> *albums) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.albums = albums;
+            [self reloadData];
+            [self hideActivity];
+        });
+    }];
+
+}
+
+
+#pragma mark - Reload data
+
+- (void)reloadData {
+    [self.tableView reloadData];
+}
+
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.albums.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    APAlbumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[APAlbumTableViewCell reuseIdentifier]
+                                                                 forIndexPath:indexPath];
+    [cell configureWithAlbum:self.albums[indexPath.row]];
+
+    return cell;
 }
 
 
@@ -91,6 +132,19 @@
         [_unauthorizedAlert addAction:exitButton];
     }
     return _unauthorizedAlert;
+}
+
+
+#pragma mark - Private 
+
+- (void)showActivity {
+    self.fetchIndicator.hidden = NO;
+    [self.fetchIndicator startAnimating];
+}
+
+- (void)hideActivity {
+    self.fetchIndicator.hidden = YES;
+    [self.fetchIndicator stopAnimating];
 }
 
 

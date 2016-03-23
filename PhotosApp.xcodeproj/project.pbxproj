@@ -14,6 +14,8 @@
 		2352CAEA1CA13F1C001AB571 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2352CAE71CA13F1C001AB571 /* Main.storyboard */; };
 		2352CAEE1CA13F23001AB571 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2352CAEC1CA13F23001AB571 /* Info.plist */; };
 		2352CAEF1CA13F23001AB571 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2352CAED1CA13F23001AB571 /* main.m */; };
+		236D9BC21CA2B23B00A5C89D /* APPhotoAlbums.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D9BC11CA2B23B00A5C89D /* APPhotoAlbums.m */; };
+		236D9BC81CA2E01D00A5C89D /* APAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D9BC71CA2E01D00A5C89D /* APAlbumTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,10 @@
 		2352CAE81CA13F1C001AB571 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2352CAEC1CA13F23001AB571 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2352CAED1CA13F23001AB571 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		236D9BC01CA2B23B00A5C89D /* APPhotoAlbums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPhotoAlbums.h; sourceTree = "<group>"; };
+		236D9BC11CA2B23B00A5C89D /* APPhotoAlbums.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPhotoAlbums.m; sourceTree = "<group>"; };
+		236D9BC61CA2E01D00A5C89D /* APAlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAlbumTableViewCell.h; sourceTree = "<group>"; };
+		236D9BC71CA2E01D00A5C89D /* APAlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAlbumTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,7 @@
 		2352CABD1CA13CDF001AB571 /* PhotosApp */ = {
 			isa = PBXGroup;
 			children = (
+				236D9BBF1CA2B21200A5C89D /* Model */,
 				2352CAF01CA13F2B001AB571 /* Views */,
 				2352CAEB1CA13F23001AB571 /* Supporting Files */,
 				2352CAE41CA13F1C001AB571 /* Storyboard */,
@@ -148,8 +155,35 @@
 		2352CAF01CA13F2B001AB571 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				236D9BC41CA2DFD800A5C89D /* Albums */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		236D9BBF1CA2B21200A5C89D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				236D9BC01CA2B23B00A5C89D /* APPhotoAlbums.h */,
+				236D9BC11CA2B23B00A5C89D /* APPhotoAlbums.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		236D9BC41CA2DFD800A5C89D /* Albums */ = {
+			isa = PBXGroup;
+			children = (
+				236D9BC51CA2DFD800A5C89D /* Cells */,
+			);
+			path = Albums;
+			sourceTree = "<group>";
+		};
+		236D9BC51CA2DFD800A5C89D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				236D9BC61CA2E01D00A5C89D /* APAlbumTableViewCell.h */,
+				236D9BC71CA2E01D00A5C89D /* APAlbumTableViewCell.m */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,7 +259,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2352CAD81CA13ED4001AB571 /* AppDelegate.m in Sources */,
+				236D9BC21CA2B23B00A5C89D /* APPhotoAlbums.m in Sources */,
 				2352CADD1CA13EFA001AB571 /* ViewController.m in Sources */,
+				236D9BC81CA2E01D00A5C89D /* APAlbumTableViewCell.m in Sources */,
 				2352CAEF1CA13F23001AB571 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,7 +374,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/PhotosApp/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AP.PhotosApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -351,7 +387,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/PhotosApp/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AP.PhotosApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -377,6 +413,7 @@
 				2352CAD41CA13CDF001AB571 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
