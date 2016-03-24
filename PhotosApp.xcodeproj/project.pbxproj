@@ -17,9 +17,9 @@
 		236D9BC81CA2E01D00A5C89D /* APAlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D9BC71CA2E01D00A5C89D /* APAlbumTableViewCell.m */; };
 		236D9BCC1CA3085800A5C89D /* APAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D9BCB1CA3085800A5C89D /* APAlbumsViewController.m */; };
 		236D9BD01CA309F500A5C89D /* APAlbumDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D9BCF1CA309F500A5C89D /* APAlbumDetailViewController.m */; };
-		236D9BD41CA30B9500A5C89D /* APPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D9BD31CA30B9500A5C89D /* APPhotoCell.m */; };
 		236D9BD91CA321A200A5C89D /* APPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 236D9BD81CA321A200A5C89D /* APPhotosViewController.m */; };
-		236D9BDB1CA323EC00A5C89D /* APPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 236D9BDA1CA323EC00A5C89D /* APPhotoCell.xib */; };
+		23828D871CA41A2000EC060C /* APPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23828D851CA41A2000EC060C /* APPhotoCell.m */; };
+		23828D881CA41A2000EC060C /* APPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23828D861CA41A2000EC060C /* APPhotoCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,11 +39,11 @@
 		236D9BCB1CA3085800A5C89D /* APAlbumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAlbumsViewController.m; sourceTree = "<group>"; };
 		236D9BCE1CA309F500A5C89D /* APAlbumDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAlbumDetailViewController.h; sourceTree = "<group>"; };
 		236D9BCF1CA309F500A5C89D /* APAlbumDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAlbumDetailViewController.m; sourceTree = "<group>"; };
-		236D9BD21CA30B9500A5C89D /* APPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPhotoCell.h; sourceTree = "<group>"; };
-		236D9BD31CA30B9500A5C89D /* APPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPhotoCell.m; sourceTree = "<group>"; };
 		236D9BD71CA321A200A5C89D /* APPhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPhotosViewController.h; sourceTree = "<group>"; };
 		236D9BD81CA321A200A5C89D /* APPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPhotosViewController.m; sourceTree = "<group>"; };
-		236D9BDA1CA323EC00A5C89D /* APPhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APPhotoCell.xib; sourceTree = "<group>"; };
+		23828D841CA41A2000EC060C /* APPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPhotoCell.h; sourceTree = "<group>"; };
+		23828D851CA41A2000EC060C /* APPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPhotoCell.m; sourceTree = "<group>"; };
+		23828D861CA41A2000EC060C /* APPhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APPhotoCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,9 +189,7 @@
 		236D9BD11CA30B7000A5C89D /* Album */ = {
 			isa = PBXGroup;
 			children = (
-				236D9BD21CA30B9500A5C89D /* APPhotoCell.h */,
-				236D9BD31CA30B9500A5C89D /* APPhotoCell.m */,
-				236D9BDA1CA323EC00A5C89D /* APPhotoCell.xib */,
+				23828D831CA41A2000EC060C /* Cells */,
 			);
 			path = Album;
 			sourceTree = "<group>";
@@ -210,6 +208,16 @@
 				236D9BD81CA321A200A5C89D /* APPhotosViewController.m */,
 			);
 			path = Photo;
+			sourceTree = "<group>";
+		};
+		23828D831CA41A2000EC060C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				23828D841CA41A2000EC060C /* APPhotoCell.h */,
+				23828D851CA41A2000EC060C /* APPhotoCell.m */,
+				23828D861CA41A2000EC060C /* APPhotoCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,9 +279,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2352CAE31CA13F14001AB571 /* Assets.xcassets in Resources */,
+				23828D881CA41A2000EC060C /* APPhotoCell.xib in Resources */,
 				2352CAEA1CA13F1C001AB571 /* Main.storyboard in Resources */,
 				2352CAE91CA13F1C001AB571 /* LaunchScreen.storyboard in Resources */,
-				236D9BDB1CA323EC00A5C89D /* APPhotoCell.xib in Resources */,
 				2352CAEE1CA13F23001AB571 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,12 +294,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				236D9BD91CA321A200A5C89D /* APPhotosViewController.m in Sources */,
+				23828D871CA41A2000EC060C /* APPhotoCell.m in Sources */,
 				2352CAD81CA13ED4001AB571 /* AppDelegate.m in Sources */,
 				236D9BCC1CA3085800A5C89D /* APAlbumsViewController.m in Sources */,
 				236D9BD01CA309F500A5C89D /* APAlbumDetailViewController.m in Sources */,
 				236D9BC21CA2B23B00A5C89D /* APPhotoAlbum.m in Sources */,
 				236D9BC81CA2E01D00A5C89D /* APAlbumTableViewCell.m in Sources */,
-				236D9BD41CA30B9500A5C89D /* APPhotoCell.m in Sources */,
 				2352CAEF1CA13F23001AB571 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
