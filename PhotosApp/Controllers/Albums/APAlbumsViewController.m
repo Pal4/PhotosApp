@@ -36,7 +36,7 @@ static NSString *const kShowAlbumSegue = @"ShowAlbumSegue";
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self setupViews];
-    [self requestPermission];
+    [self preRequestPermission];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -93,15 +93,19 @@ static NSString *const kShowAlbumSegue = @"ShowAlbumSegue";
 #pragma mark - Photo permission
 
 - (void)requestPermission {
-    if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined) {
-        [self presentViewController:self.preauthorizedAlert animated:YES completion:nil];
-    }
-
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self setupWithAuthorization:status];
         });
     }];
+}
+
+- (void)preRequestPermission {
+    if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined) {
+        [self presentViewController:self.preauthorizedAlert animated:YES completion:nil];
+    } else {
+        [self requestPermission];
+    }
 }
 
 
@@ -188,10 +192,14 @@ static NSString *const kShowAlbumSegue = @"ShowAlbumSegue";
                                      {
                                          exit(0);
                                      }];
+        __weak typeof(self) wSelf = self;
         UIAlertAction* startAutorizationButton = [UIAlertAction
                                          actionWithTitle:@"Разрешить доступ"
                                          style:UIAlertActionStyleDefault
-                                         handler:nil];
+                                                  handler:^(UIAlertAction * action)
+                                                  {
+                                                      [wSelf requestPermission];
+                                                  }];
 
         [_preauthorizedAlert addAction:startAutorizationButton];
         [_preauthorizedAlert addAction:exitButton];
