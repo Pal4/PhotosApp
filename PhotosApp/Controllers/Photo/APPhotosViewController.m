@@ -15,6 +15,7 @@
 @interface APPhotosViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (assign, nonatomic) BOOL notFirstApear;
 
 @end
 
@@ -31,6 +32,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
+    if (self.notFirstApear) {
+        return;
+    }
+
+    self.notFirstApear = YES;
+
     self.collectionView.hidden = YES;
     [self.collectionView setNeedsLayout];
     [self.collectionView layoutIfNeeded];
