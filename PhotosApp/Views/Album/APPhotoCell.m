@@ -19,6 +19,10 @@
 
 @implementation APPhotoCell
 
+- (void)awakeFromNib {
+    self.imageView.clipsToBounds = YES;
+}
+
 + (NSString *)reuseIdentifier {
     return [NSString stringWithFormat:@"%@Identifier", NSStringFromClass([self class])];
 }
@@ -27,11 +31,13 @@
     return [UINib nibWithNibName:NSStringFromClass([self class]) bundle:nil];
 }
 
-- (void)configureWithAsset:(PHAsset *)asset {
+- (void)configureWithAsset:(PHAsset *)asset imageContentMode:(UIViewContentMode)mode {
     if (self.requestId != 0) {
         [[PHImageManager defaultManager] cancelImageRequest:self.requestId];
         self.requestId = 0;
     }
+
+    self.imageView.contentMode = mode;
 
     self.requestId = [[PHImageManager defaultManager] requestImageForAsset:asset
                                                                 targetSize:self.imageView.frame.size

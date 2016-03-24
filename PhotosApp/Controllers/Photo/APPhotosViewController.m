@@ -29,10 +29,12 @@
 
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 
-    [self reloadDataAndSetOffset];
+    [self.collectionView reloadData];
+    [self.view layoutIfNeeded];
+    [self.collectionView scrollToItemAtIndexPath:self.startIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:NO];
 }
 
 
@@ -40,14 +42,8 @@
 
 - (void)setupCollectionView {
     [self.collectionView registerNib:[APPhotoCell nib] forCellWithReuseIdentifier:[APPhotoCell reuseIdentifier]];
-    self.collectionView.hidden = YES;
 }
 
-- (void)reloadDataAndSetOffset {
-    [self.collectionView reloadData];
-    self.collectionView.contentOffset = [self contentOffestForIndex:self.startIndex];
-    self.collectionView.hidden = NO;
-}
 
 #pragma mark - UICollectionViewDataSource
 
@@ -58,7 +54,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     APPhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[APPhotoCell reuseIdentifier]
                                                                   forIndexPath:indexPath];
-    [cell configureWithAsset:self.album.photoAssets[indexPath.item]];
+    [cell configureWithAsset:self.album.photoAssets[indexPath.item] imageContentMode:UIViewContentModeScaleAspectFit];
     return cell;
 }
 
@@ -66,7 +62,7 @@
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return self.collectionView.bounds.size;
+    return self.view.bounds.size;
 }
 
 

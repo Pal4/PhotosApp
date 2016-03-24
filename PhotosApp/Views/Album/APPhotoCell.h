@@ -14,6 +14,6 @@
 
 + (UINib *)nib;
 + (NSString *)reuseIdentifier;
-- (void)configureWithAsset:(PHAsset *)asset;
+- (void)configureWithAsset:(PHAsset *)asset imageContentMode:(UIViewContentMode)mode;
 
 @end

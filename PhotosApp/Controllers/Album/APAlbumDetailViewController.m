@@ -18,7 +18,7 @@ static NSString *const kShowPhotosSegue = @"ShowPhotosSegue";
 @interface APAlbumDetailViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (assign, nonatomic) NSUInteger selectedPhotoIndex;
+@property (assign, nonatomic) NSIndexPath* selectedPhotoIndexPath;
 
 @end
 
@@ -50,7 +50,7 @@ static NSString *const kShowPhotosSegue = @"ShowPhotosSegue";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     APPhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[APPhotoCell reuseIdentifier]
                                                                   forIndexPath:indexPath];
-    [cell configureWithAsset:self.album.photoAssets[indexPath.item]];
+    [cell configureWithAsset:self.album.photoAssets[indexPath.item] imageContentMode:UIViewContentModeScaleAspectFill];
     return cell;
 }
 
@@ -58,7 +58,7 @@ static NSString *const kShowPhotosSegue = @"ShowPhotosSegue";
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    self.selectedPhotoIndex = indexPath.row;
+    self.selectedPhotoIndexPath = indexPath;
     [self performSegueWithIdentifier:kShowPhotosSegue sender:self];
 }
 
@@ -77,7 +77,7 @@ static NSString *const kShowPhotosSegue = @"ShowPhotosSegue";
     if ([segue.identifier isEqualToString:kShowPhotosSegue]) {
         APPhotosViewController *vc = segue.destinationViewController;
         vc.album = self.album;
-        vc.startIndex = self.selectedPhotoIndex;
+        vc.startIndexPath = self.selectedPhotoIndexPath;
     }
 }
 
