@@ -31,11 +31,6 @@
     NSUInteger count = album.photoAssets.count;
     self.countLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)count];
 
-    if (self.requestId != 0) {
-        [[PHImageManager defaultManager] cancelImageRequest:self.requestId];
-        self.requestId = 0;
-    }
-
     PHAsset *lastImageAsset = album.photoAssets.lastObject;
 
     if (lastImageAsset) {
@@ -51,6 +46,15 @@
 
 
 #pragma mark - ovveride
+
+- (void)prepareForReuse {
+    if (self.requestId != 0) {
+        [[PHImageManager defaultManager] cancelImageRequest:self.requestId];
+        self.requestId = 0;
+    }
+
+    self.thumbnailImageView.image = nil;
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

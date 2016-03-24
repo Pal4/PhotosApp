@@ -19,9 +19,14 @@
 
 @implementation APPhotoCell
 
+#pragma mark - Initialize
+
 - (void)awakeFromNib {
     self.imageView.clipsToBounds = YES;
 }
+
+
+#pragma mark - Public
 
 + (NSString *)reuseIdentifier {
     return [NSString stringWithFormat:@"%@Identifier", NSStringFromClass([self class])];
@@ -46,6 +51,13 @@
                                                              resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
                                                                  self.imageView.image = result;
                                                              }];
+}
+
+
+#pragma mark - Ovveride
+
+- (void)prepareForReuse {
+    self.imageView.image = nil;
 }
 
 @end
