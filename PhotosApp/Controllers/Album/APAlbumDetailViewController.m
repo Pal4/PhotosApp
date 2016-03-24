@@ -77,7 +77,7 @@ static NSString *const kShowPhotosSegue = @"ShowPhotosSegue";
     if ([segue.identifier isEqualToString:kShowPhotosSegue]) {
         APPhotosViewController *vc = segue.destinationViewController;
         vc.album = self.album;
-        vc.startIndexPath = self.selectedPhotoIndexPath;
+        vc.selectedIndexPath = self.selectedPhotoIndexPath;
     }
 }
 

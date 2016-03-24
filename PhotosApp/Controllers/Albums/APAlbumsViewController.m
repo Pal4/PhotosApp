@@ -19,6 +19,7 @@ static NSString *const kShowAlbumSegue = @"ShowAlbumSegue";
 @interface APAlbumsViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) UIAlertController *unauthorizedAlert;
+@property (strong, nonatomic) UIAlertController *preauthorizedAlert;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *fetchIndicator;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -92,6 +93,10 @@ static NSString *const kShowAlbumSegue = @"ShowAlbumSegue";
 #pragma mark - Photo permission
 
 - (void)requestPermission {
+    if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined) {
+        [self presentViewController:self.preauthorizedAlert animated:YES completion:nil];
+    }
+
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self setupWithAuthorization:status];
@@ -168,6 +173,30 @@ static NSString *const kShowAlbumSegue = @"ShowAlbumSegue";
         [_unauthorizedAlert addAction:exitButton];
     }
     return _unauthorizedAlert;
+}
+
+- (UIAlertController *)preauthorizedAlert {
+    if (!_preauthorizedAlert) {
+        _preauthorizedAlert = [UIAlertController
+                              alertControllerWithTitle:@"Запрос на разрешение доступа"
+                              message:@"Для работы приложения необходим доступ к фотографиям"
+                              preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* exitButton = [UIAlertAction
+                                     actionWithTitle:@"Выход"
+                                     style:UIAlertActionStyleDefault
+                                     handler:^(UIAlertAction * action)
+                                     {
+                                         exit(0);
+                                     }];
+        UIAlertAction* startAutorizationButton = [UIAlertAction
+                                         actionWithTitle:@"Разрешить доступ"
+                                         style:UIAlertActionStyleDefault
+                                         handler:nil];
+
+        [_preauthorizedAlert addAction:startAutorizationButton];
+        [_preauthorizedAlert addAction:exitButton];
+    }
+    return _preauthorizedAlert;
 }
 
 

@@ -13,6 +13,6 @@
 @interface APPhotosViewController : UIViewController
 
 @property (strong, nonatomic) APPhotoAlbum *album;
-@property (assign, nonatomic) NSIndexPath* startIndexPath;
+@property (assign, nonatomic) NSIndexPath* selectedIndexPath;
 
 @end

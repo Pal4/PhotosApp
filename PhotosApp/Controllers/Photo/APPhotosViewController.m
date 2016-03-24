@@ -31,10 +31,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
-    [self.collectionView reloadData];
-    [self.view layoutIfNeeded];
-    [self.collectionView scrollToItemAtIndexPath:self.startIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:NO];
+    self.collectionView.hidden = YES;
+    [self.collectionView setNeedsLayout];
+    [self.collectionView layoutIfNeeded];
+    [self.collectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    self.collectionView.hidden = NO;
 }
 
 
@@ -66,13 +67,28 @@
 }
 
 
-#pragma mark - Private
+#pragma mark - UIScrollViewDelegate
 
-- (CGPoint)contentOffestForIndex:(NSUInteger)index {
-    CGFloat elementWidth = self.collectionView.bounds.size.width;
-    CGPoint offset = CGPointMake((index * elementWidth), 0.f);
-    return offset;
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    self.selectedIndexPath = [self indexForContentOffset:scrollView.contentOffset];
 }
 
+
+#pragma mark - Properties
+
+- (void)setSelectedIndexPath:(NSIndexPath *)selectedIndexPath {
+    _selectedIndexPath = selectedIndexPath;
+    self.title = [NSString stringWithFormat:@"%lu/%lu", (unsigned long)(selectedIndexPath.row + 1), (unsigned long)self.album.photoAssets.count];
+}
+
+
+#pragma mark - Private 
+
+- (NSIndexPath *)indexForContentOffset:(CGPoint)offset {
+    CGFloat offsetX = offset.x;
+    CGFloat itemWidth = self.view.bounds.size.width;
+    NSInteger item = (NSInteger)((offsetX + itemWidth / 2.f) / itemWidth);
+    return [NSIndexPath indexPathForItem:item inSection:0];
+}
 
 @end
